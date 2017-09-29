@@ -54,9 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\DataModel.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Abstractions\NamedModel.cs" />
+    <Compile Include="City.cs" />
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
+    <Compile Include="Contracts\INamed.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

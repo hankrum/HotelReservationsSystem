@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelReservations.Data.Model
+namespace HotelReservations.Data.Model.Contracts
 {
-    public class Class1
+    public interface INamed
     {
+        string Name { get; set; }
     }
 }
