@@ -15,23 +15,23 @@ namespace HotelReservations.Data.Model
         string Name { get; set; }
 
         [Required]
-        short MainBeds { get; set; }
+        public short MainBeds { get; set; }
 
         [Required]
-        short AdditionalBeds { get; set; }
+        public short AdditionalBeds { get; set; }
 
-        bool HasBathTube { get; set; }
+        public bool HasBathTube { get; set; }
 
-        bool HasTV { get; set; }
+        public bool HasTV { get; set; }
 
-        bool HasTerrace { get; set; }
+        public bool HasTerrace { get; set; }
 
-        bool HasAirConditioner { get; set; }
+        public bool HasAirConditioner { get; set; }
 
-        bool HasRefrigerator { get; set; }
+        public bool HasRefrigerator { get; set; }
 
-        bool HasHairDryer { get; set; }
+        public bool HasHairDryer { get; set; }
 
-        HashSet<PriceGroup> PriceGroups { get; set; }
+        public virtual HashSet<PricePeriod> PeriodPriceLists { get; set; }
     }
 }

@@ -9,14 +9,14 @@ namespace HotelReservations.Data.Model.PriceModels
 {
     public class PriceSet : DataModel
     {
-        double? BedOnly { get; set; }
+        public double? BedOnly { get; set; }
 
-        double? BB { get; set; }
+        public double? BB { get; set; }
 
-        double? HB { get; set; }
+        public double? HB { get; set; }
 
-        double? FB { get; set; }
+        public double? FB { get; set; }
 
-        double? AllInclusive { get; set; }
+        public double? AllInclusive { get; set; }
     }
 }

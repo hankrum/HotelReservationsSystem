@@ -12,7 +12,9 @@ namespace HotelReservations.Data.Model
     {
         Guid TypeId { get; set; }
 
-        //[ForeignKey("Hotel")]
+        public virtual RoomType Type { get; set; }
+
+        [ForeignKey("Hotel")]
         Guid HotelId { get; set; }
     }
 }
