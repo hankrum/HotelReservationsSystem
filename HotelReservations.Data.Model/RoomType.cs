@@ -1,4 +1,5 @@
 ﻿using HotelReservations.Data.Model.Abstractions;
+using HotelReservations.Data.Model.PriceModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,8 +14,10 @@ namespace HotelReservations.Data.Model
         [Required]
         string Name { get; set; }
 
+        [Required]
         short MainBeds { get; set; }
 
+        [Required]
         short AdditionalBeds { get; set; }
 
         bool HasBathTube { get; set; }
@@ -27,8 +30,8 @@ namespace HotelReservations.Data.Model
 
         bool HasRefrigerator { get; set; }
 
-        bool HasHairDrier { get; set; }
+        bool HasHairDryer { get; set; }
 
-        Guid PriceGroupId { get; set; }
+        HashSet<PriceGroup> PriceGroups { get; set; }
     }
 }
