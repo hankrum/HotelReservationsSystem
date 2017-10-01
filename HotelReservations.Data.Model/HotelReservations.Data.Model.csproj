@@ -65,11 +65,17 @@
     <Compile Include="PriceModels\PricePeriod.cs" />
     <Compile Include="PriceModels\PriceSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomType.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HotelReservations.Infrastructure\HotelReservations.Infrastructure.csproj">
+      <Project>{71AE2CCA-03EA-410A-925A-AF00936CF341}</Project>
+      <Name>HotelReservations.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

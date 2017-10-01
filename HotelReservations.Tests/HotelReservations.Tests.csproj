@@ -91,9 +91,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HotelReservations\HotelReservations.csproj">
+    <ProjectReference Include="..\HotelReservations\HotelReservations.Web.csproj">
       <Project>{68182AC8-CCEE-4CEF-9509-CD4977ED1FAC}</Project>
-      <Name>HotelReservations</Name>
+      <Name>HotelReservations.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
