@@ -17,12 +17,12 @@ namespace HotelReservations.Data.Model.PriceModels
         [Required]
         public DateTime End { get; set; }
 
-        public int WeekendPercent { get; set; }
+        public int? WeekendPercent { get; set; }
 
         [Required]
-        [ForeignKey("PriceList")]
+        [ForeignKey("PriceGroup")]
         public virtual Guid PriceGroupId { get; set; }
 
-        public virtual PriceGroup PriceList { get; set; }
+        public virtual PriceGroup PriceGroup { get; set; }
     }
 }

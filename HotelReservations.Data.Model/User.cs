@@ -14,11 +14,11 @@ namespace HotelReservations.Data.Model
 {
     public class User : IdentityUser, IAuditable, IDeletable
     {
-        //private ICollection<Post> posts;
+        private ICollection<Reservation> reservations;
 
         public User()
         {
-            //this.posts = new HashSet<Post>();
+            this.reservations = new HashSet<Reservation>();
         }
 
         [Index]
@@ -33,17 +33,17 @@ namespace HotelReservations.Data.Model
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
 
-        //public virtual ICollection<Post> Posts
-        //{
-        //    get
-        //    {
-        //        return this.posts;
-        //    }
-        //    set
-        //    {
-        //        this.posts = value;
-        //    }
-        //}
+        public virtual ICollection<Reservation> Reservations
+        {
+            get
+            {
+                return this.reservations;
+            }
+            set
+            {
+                this.reservations = value;
+            }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
