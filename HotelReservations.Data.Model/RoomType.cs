@@ -12,7 +12,7 @@ namespace HotelReservations.Data.Model
     public class RoomType : DataModel
     {
         [Required]
-        string Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public short MainBeds { get; set; }

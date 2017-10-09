@@ -27,7 +27,7 @@ namespace HotelReservations.Data
         public IDbSet<Reservation> Reservations { get; set; }
         public IDbSet<Room> Rooms { get; set; }
         public IDbSet<RoomType> RoomTypes { get; set; }
-        public IDbSet<User> Users { get; set; }
+        //public IDbSet<User> Users { get; set; }
 
         public override int SaveChanges()
         {

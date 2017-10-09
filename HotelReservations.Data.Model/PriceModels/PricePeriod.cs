@@ -20,9 +20,8 @@ namespace HotelReservations.Data.Model.PriceModels
         public int? WeekendPercent { get; set; }
 
         [Required]
-        [ForeignKey("PriceGroup")]
-        public virtual Guid PriceGroupId { get; set; }
-
+        //[ForeignKey("PriceGroup")]
+        //public virtual Guid PriceGroupId { get; set; }
         public virtual PriceGroup PriceGroup { get; set; }
     }
 }

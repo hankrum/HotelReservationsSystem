@@ -65,12 +65,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HotelReservations.Data.Model\HotelReservations.Data.Model.csproj">
       <Project>{5E14F362-1F03-415D-9951-277B1D147F7E}</Project>
       <Name>HotelReservations.Data.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

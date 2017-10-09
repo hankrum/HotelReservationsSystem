@@ -10,15 +10,15 @@ namespace HotelReservations.Data.Model.PriceModels
 {
     public class PriceGroup : DataModel
     {
-        PriceSet PerRoom { get; set; }
+        public PriceSet PerRoom { get; set; }
 
-        PriceSet PerMainBed { get; set; }
+        public PriceSet PerMainBed { get; set; }
 
-        PriceSet PerAdditionalBed { get; set; }
+        public PriceSet PerAdditionalBed { get; set; }
 
-        PriceSet PerChildBed { get; set; }
+        public PriceSet PerChildBed { get; set; }
 
-        [ForeignKey("RoomType")]
-        Guid RoomTypeId { get; set; }
+        //[ForeignKey("RoomType")]
+        public virtual RoomType RoomType { get; set; }
     }
 }

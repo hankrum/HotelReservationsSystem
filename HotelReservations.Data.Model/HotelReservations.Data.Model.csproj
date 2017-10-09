@@ -61,6 +61,7 @@
     <Compile Include="Contracts\INamed.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Hotel.cs" />
+    <Compile Include="PhotoUrl.cs" />
     <Compile Include="PriceModels\PriceGroup.cs" />
     <Compile Include="PriceModels\PricePeriod.cs" />
     <Compile Include="PriceModels\PriceSet.cs" />

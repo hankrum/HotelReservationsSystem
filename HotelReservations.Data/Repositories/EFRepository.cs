@@ -12,6 +12,7 @@ namespace HotelReservations.Data.Repositories
     {
         private readonly MsSqlDbContext context;
 
+
         public EFRepository(MsSqlDbContext context)
         {
             this.context = context;

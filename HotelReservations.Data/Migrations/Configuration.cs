@@ -1,24 +1,22 @@
-﻿using HotelReservations.Data.Model;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelReservations.Data.Migrations
+﻿namespace HotelReservations.Data.Migrations
 {
-    public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
+    using HotelReservations.Data.Model;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    public sealed class Configuration : DbMigrationsConfiguration<HotelReservations.Data.MsSqlDbContext>
     {
         private const string AdministratorUserName = "info@telerikacademy.com";
         private const string AdministratorPassword = "123456";
 
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MsSqlDbContext context)
@@ -33,7 +31,7 @@ namespace HotelReservations.Data.Migrations
         {
             if (!context.Roles.Any())
             {
-                var roleName = "Admin";
+                var roleName = "SiteAdmin";
 
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
@@ -70,8 +68,8 @@ namespace HotelReservations.Data.Migrations
             //        };
 
             //        context.Posts.Add(post);
-            //    }
-            //}
         }
     }
 }
+
+
