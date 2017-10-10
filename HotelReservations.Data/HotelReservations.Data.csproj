@@ -53,6 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201710092211577_Initial.cs" />
+    <Compile Include="Migrations\201710092211577_Initial.Designer.cs">
+      <DependentUpon>201710092211577_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,9 +74,18 @@
       <Project>{5E14F362-1F03-415D-9951-277B1D147F7E}</Project>
       <Name>HotelReservations.Data.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HotelReservations.Infrastructure\HotelReservations.Infrastructure.csproj">
+      <Project>{71AE2CCA-03EA-410A-925A-AF00936CF341}</Project>
+      <Name>HotelReservations.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710092211577_Initial.resx">
+      <DependentUpon>201710092211577_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

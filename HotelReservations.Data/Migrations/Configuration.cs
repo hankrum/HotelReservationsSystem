@@ -1,6 +1,7 @@
 ﻿namespace HotelReservations.Data.Migrations
 {
     using HotelReservations.Data.Model;
+    using HotelReservations.Web.Infrastructure;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
@@ -31,7 +32,7 @@
         {
             if (!context.Roles.Any())
             {
-                var roleName = "SiteAdmin";
+                var roleName = WebConstants.SiteAdminRoleString;
 
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);

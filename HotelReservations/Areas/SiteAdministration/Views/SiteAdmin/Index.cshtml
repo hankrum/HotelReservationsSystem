@@ -1,0 +1,20 @@
+﻿@using Kendo.Mvc.UI
+@using HotelReservations.Web.Areas.SiteAdministration.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add Hotel Admin</h2>
+
+@(Html.Kendo().Grid<HotelAdminViewModel>()
+        .Name("grid")
+        .Columns(columns => {
+            columns.Bound(pr => pr.Email);
+            
+
+        })
+        .Editable()
+        .Pageable()
+        .Sortable()
+        )

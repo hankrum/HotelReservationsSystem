@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HotelReservations.Models;
 using HotelReservations.Data.Model;
+using HotelReservations.Web.Infrastructure;
 
 namespace HotelReservations.Controllers
 {
@@ -80,6 +81,14 @@ namespace HotelReservations.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //var user = User.Identity;
+                    //var uId = user.GetUserId();
+                    //var roles = this.UserManager.GetRoles(uId);
+                    //bool isSiteAdmin = roles[0].ToString() == WebConstants.SiteAdminRoleString;  //User.IsInRole(WebConstants.HotelAdminRoleString);
+                    //if (isSiteAdmin)
+                    //{
+                    //    return RedirectToRoute(WebConstants.HotelAdminRouteString);
+                    //}
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

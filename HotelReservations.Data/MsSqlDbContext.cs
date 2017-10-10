@@ -14,7 +14,7 @@ namespace HotelReservations.Data
     public class MsSqlDbContext : IdentityDbContext<User>
     {
         public MsSqlDbContext()
-            : base("LocalConnection", throwIfV1Schema: false)
+            : base("HotelReservations", throwIfV1Schema: false)
         {
         }
 
