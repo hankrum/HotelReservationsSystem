@@ -1,7 +1,7 @@
 ﻿namespace HotelReservations.Data.Migrations
 {
     using HotelReservations.Data.Model;
-    using HotelReservations.Web.Infrastructure;
+    using HotelReservations.Infrastructure;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;

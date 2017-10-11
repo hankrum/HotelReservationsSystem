@@ -413,6 +413,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\HotelAdministration\HotelAdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\HotelAdministration\Models\HotelViewModel.cs" />
     <Compile Include="Areas\SiteAdministration\Controllers\SiteAdminController.cs" />
     <Compile Include="Areas\SiteAdministration\Models\HotelAdminViewModel.cs" />
     <Compile Include="Areas\SiteAdministration\SiteAdministrationAreaRegistration.cs" />
@@ -497,7 +498,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HotelAdministration\Controllers\" />
-    <Folder Include="Areas\HotelAdministration\Models\" />
     <Folder Include="Areas\HotelAdministration\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

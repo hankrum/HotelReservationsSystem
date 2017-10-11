@@ -11,6 +11,9 @@ using Microsoft.Owin.Security;
 using HotelReservations.Models;
 using HotelReservations.Data.Model;
 using HotelReservations.Web.Infrastructure;
+using HotelReservations.Infrastructure;
+using Microsoft.AspNet.Identity.EntityFramework;
+using HotelReservations.Data;
 
 namespace HotelReservations.Controllers
 {
@@ -24,7 +27,7 @@ namespace HotelReservations.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -36,9 +39,9 @@ namespace HotelReservations.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -130,7 +133,7 @@ namespace HotelReservations.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -157,23 +160,70 @@ namespace HotelReservations.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, MsSqlDbContext context)
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                //bool userIsAdmin = User.IsInRole(WebConstants.HotelAdminRoleString);
+
+                //var userStore = new UserStore<User>(context);
+                //var userManager = new UserManager<User>(userStore);
+                var user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    //EmailConfirmed = true,
+                    CreatedOn = DateTime.Now
+                };
+
+                //userManager.Create(user, model.Password);
+
+
+                //var user = new User { UserName = model.Email, Email = model.Email };
+                var result = UserManager.Create(user, model.Password);
+
+                if (model.Role != null && model.Role != String.Empty)
+                {
+                    IdentityRole role;
+
+                    bool roleExists = roleManager.RoleExists(model.Role);
+
+                    if (!roleExists)
+                    {
+                        role = new IdentityRole { Name = model.Role };
+                        roleManager.Create(role);
+                    }
+                    else
+                    {
+                        role = roleManager.FindByName(model.Role);
+                    }
+
+                    UserManager.AddToRole(user.Id, model.Role);
+                }
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        return RedirectToAction("Index", "SiteAdmin", new { area = "SiteAdministration" });
+                    }
+                    else
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
