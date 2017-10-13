@@ -26,6 +26,12 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
             hotel.Rooms.Select(x => this.Rooms.Add(new RoomViewModel(x)));
             this.PhotoUrls = new HashSet<string>();
             hotel.PhotoUrls.Select(x => this.PhotoUrls.Add(x.Url));
+
+            if (this.PhotoUrls!= null && this.PhotoUrls.Count>0)
+            {
+                this.FirstPhotoUrl = this.PhotoUrls.ElementAt<string>(0);
+            }
+
             this.HasParking = hotel.HasParking;
             this.HasInternet = hotel.HasInternet;
             this.HasRestaurant = hotel.HasRestaurant;
@@ -55,6 +61,8 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
         public HashSet<RoomViewModel> Rooms { get; set; }
 
         public HashSet<string> PhotoUrls { get; set; }
+
+        public string FirstPhotoUrl { get; set; }
 
         public bool HasParking { get; set; }
 
