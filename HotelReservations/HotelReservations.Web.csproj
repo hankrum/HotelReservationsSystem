@@ -412,13 +412,16 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\HotelAdministration\Controllers\HotelController.cs" />
     <Compile Include="Areas\HotelAdministration\HotelAdministrationAreaRegistration.cs" />
     <Compile Include="Areas\HotelAdministration\Models\HotelViewModel.cs" />
+    <Compile Include="Areas\HotelAdministration\Models\RoomViewModel.cs" />
     <Compile Include="Areas\SiteAdministration\Controllers\SiteAdminController.cs" />
     <Compile Include="Areas\SiteAdministration\Models\HotelAdminViewModel.cs" />
     <Compile Include="Areas\SiteAdministration\SiteAdministrationAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -427,6 +430,7 @@
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HotelsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -449,6 +453,10 @@
     <Content Include="Areas\SiteAdministration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\SiteAdministration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\SiteAdministration\Views\SiteAdmin\Index.cshtml" />
+    <Content Include="Areas\HotelAdministration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HotelAdministration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\HotelAdministration\Views\Hotel\Index.cshtml" />
+    <Content Include="Areas\HotelAdministration\Views\Hotel\AddNew.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -497,8 +505,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\HotelAdministration\Controllers\" />
-    <Folder Include="Areas\HotelAdministration\Views\Shared\" />
+    <Folder Include="Views\Hotel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -527,6 +534,10 @@
     <ProjectReference Include="..\HotelReservations.Infrastructure\HotelReservations.Infrastructure.csproj">
       <Project>{71ae2cca-03ea-410a-925a-af00936cf341}</Project>
       <Name>HotelReservations.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelReservations.Services\HotelReservations.Services.csproj">
+      <Project>{A1BD697D-08F9-4712-A1ED-F1FC0E84F9B0}</Project>
+      <Name>HotelReservations.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

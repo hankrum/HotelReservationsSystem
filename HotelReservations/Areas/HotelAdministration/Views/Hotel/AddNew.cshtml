@@ -1,0 +1,16 @@
+﻿@using HotelReservations.Web.Areas.HotelAdministration.Models
+@model HotelViewModel
+@{
+    //ViewBag.Title = "AddNew";
+    Layout = "~/Areas/HotelAdministration/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Hotel</h2>
+@using (Html.BeginForm("AddNew", "Hotel", FormMethod.Post))
+{
+    <div class="col-md-4">
+        @Html.EditorForModel()
+    </div>
+    <button id="btnSubmit3" type="submit">Save Hotel</button>
+}
+

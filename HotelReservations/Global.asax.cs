@@ -24,8 +24,8 @@ namespace HotelReservations
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            var mapper = new AutoMapperConfig();
-            mapper.Execute(Assembly.GetExecutingAssembly());
+            //var mapper = new AutoMapperConfig();
+            //mapper.Execute(Assembly.GetExecutingAssembly());
 
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MsSqlDbContext, Configuration>());

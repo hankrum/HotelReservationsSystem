@@ -16,6 +16,8 @@ namespace HotelReservations.Web.App_Start
     using System.Data.Entity;
     using HotelReservations.Data.SaveContext;
     using AutoMapper;
+    using HotelReservations.Services.Contracts;
+    using HotelReservations.Services.Services;
 
     public static class NinjectWebCommon 
     {
@@ -84,7 +86,9 @@ namespace HotelReservations.Web.App_Start
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EFRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
-            kernel.Bind<IMapper>().To<Mapper>();
+            //kernel.Bind<IMapper>().To<Mapper>();
+
+            kernel.Bind<IHotelsService>().To<HotelsService>();
 
 
         }
