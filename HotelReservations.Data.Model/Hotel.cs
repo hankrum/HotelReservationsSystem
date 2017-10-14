@@ -37,6 +37,8 @@ namespace HotelReservations.Data.Model
 
         public virtual HashSet<PhotoUrl> PhotoUrls { get; set; }
 
+        public string FirstPhotoUrl { get; set; }
+
         public bool HasParking { get; set; }
 
         public bool HasRestaurant { get; set; }

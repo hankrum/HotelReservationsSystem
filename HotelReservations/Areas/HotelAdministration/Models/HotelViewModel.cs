@@ -25,12 +25,23 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
             this.Rooms = new HashSet<RoomViewModel>();
             hotel.Rooms.Select(x => this.Rooms.Add(new RoomViewModel(x)));
             this.PhotoUrls = new HashSet<string>();
-            hotel.PhotoUrls.Select(x => this.PhotoUrls.Add(x.Url));
+            bool hotelPhotosEmpty = hotel.PhotoUrls != null && this.PhotoUrls.Count > 0;
 
-            if (this.PhotoUrls!= null && this.PhotoUrls.Count>0)
+            if (!hotelPhotosEmpty)
             {
-                this.FirstPhotoUrl = this.PhotoUrls.ElementAt<string>(0);
+                hotel.PhotoUrls.Select(x => this.PhotoUrls.Add(x.Url));
             }
+
+            bool firstPhotoEmpty = hotel.FirstPhotoUrl == null || hotel.FirstPhotoUrl == String.Empty;
+
+            if (!firstPhotoEmpty)
+            {
+                this.FirstPhotoUrl = hotel.FirstPhotoUrl;   //this.PhotoUrls.ElementAt<string>(0);
+            }
+            //else if (this.FirstPhotoUrl!=null)
+            //{
+            //    this.FirstPhotoUrl = hotel.FirstPhotoUrl;
+            //}
 
             this.HasParking = hotel.HasParking;
             this.HasInternet = hotel.HasInternet;
@@ -85,8 +96,10 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
             result.Rooms = new HashSet<Room>();
             // TODO: to fix rooms
             result.PhotoUrls = new HashSet<PhotoUrl>();
+            bool photosEmpty = this.PhotoUrls == null || this.PhotoUrls.Count == 0;
+            bool firstPhotoEmpty = this.FirstPhotoUrl == null || this.FirstPhotoUrl == String.Empty;
 
-            if (this.PhotoUrls != null)
+            if (!photosEmpty)
             {
                 foreach (var photo in this.PhotoUrls)
                 {
@@ -95,6 +108,7 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
                     result.PhotoUrls.Add(photoUrl);
                 }
             }
+            result.FirstPhotoUrl = this.FirstPhotoUrl;  //TODO!
 
             result.HasInternet = this.HasInternet;
             result.HasParking = this.HasParking;

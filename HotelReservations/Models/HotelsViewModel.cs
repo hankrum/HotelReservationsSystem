@@ -10,6 +10,12 @@ namespace HotelReservations.Web.Models
 {
     public class HotelsViewModel
     {
+        //public HotelsViewModel()
+        //{
+        //    this.Collection = new List<HotelsViewModel>();
+        //}
+
+
         public ICollection<HotelViewModel> Collection { get; set; }
     }
 }

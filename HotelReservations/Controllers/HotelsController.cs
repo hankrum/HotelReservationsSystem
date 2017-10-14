@@ -12,7 +12,7 @@ namespace HotelReservations.Web.Controllers
     {
         private IHotelsService hotelsService;
 
-        protected HotelsController(IHotelsService hotelsService)
+        public HotelsController(IHotelsService hotelsService)
         {
             this.hotelsService = hotelsService;
         }
@@ -22,13 +22,20 @@ namespace HotelReservations.Web.Controllers
         public ActionResult Index()
         {
             var hotels = new HotelsViewModel();
+            hotels.Collection = new List<HotelViewModel>();
 
-            hotels.Collection = this.hotelsService
+            var dbHotels = this.hotelsService
                 .GetAll()
-                .Select(x => new HotelViewModel(x))
+                //.Select(x => new HotelViewModel(x))
                 .ToList();
 
-            return View(hotels);
+            foreach (var dbHotel in dbHotels)
+            {
+                var hotel = new HotelViewModel(dbHotel);
+                hotels.Collection.Add(hotel);
+            }
+
+            return View(hotels.Collection);
         }
     }
 }
