@@ -21,10 +21,14 @@ namespace HotelReservations.Services.Services
             this.context = context;
         }
 
-
         public User GetByUserName(string userName)
         {
             return this.usersRepo.All.FirstOrDefault<User>(x => x.UserName == userName);
+        }
+
+        public User GetById(string id)
+        {
+            return this.usersRepo.All.FirstOrDefault<User>(x => x.Id == id);
         }
     }
 }

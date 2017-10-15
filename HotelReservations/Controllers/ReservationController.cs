@@ -9,6 +9,8 @@ using System.Web.Mvc;
 
 namespace HotelReservations.Web.Controllers
 {
+
+    [Authorize]
     public class ReservationController : Controller
     {
         private IReservationService reservationService;

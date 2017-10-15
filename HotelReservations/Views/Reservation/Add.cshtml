@@ -5,14 +5,17 @@
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Model.HotelId = ViewBag.HotelId;
+    //Model.HotelId = ViewBag.HotelId;
 }
 
 <h2>Reservation for @ViewBag.HotelName</h2>
 
 @using (Html.BeginForm("Add", "Reservation", FormMethod.Post))
 {
-
+    <div>@ViewBag.HotelId</div>
+    <span>
+        <input type="text" name="HotelId"  value=@ViewBag.HotelId readonly/> @*style="visibility:hidden"*@
+    </span>
 <div>
     @*<label for=""></label>*@
     @Html.Label("StartDate", "Check-in:")

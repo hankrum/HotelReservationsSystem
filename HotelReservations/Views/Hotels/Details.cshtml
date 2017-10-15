@@ -36,7 +36,10 @@
             }
 
         </ul>
-        @Html.ActionLink("Reservation", "Add", "Reservation", new { Model.Id }, new { @class = "btn btn-info" })
-        @*<button class="btn btn-info" formaction="">Reservation</button>*@
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Reservation", "Add", "Reservation", new { Model.Id }, new { @class = "btn btn-info" });
+            @*<button class="btn btn-info" formaction="">Reservation</button>*@
+        }
     </div>
 </div>

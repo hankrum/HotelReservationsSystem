@@ -34,6 +34,9 @@ namespace HotelReservations.Data.Model
         [Index]
         public virtual Country Country { get; set; }
 
+        [Required]
+        public virtual User User { get; set; }
+
         public virtual HashSet<Room> Rooms {get; set; }
 
         public virtual HashSet<PhotoUrl> PhotoUrls { get; set; }

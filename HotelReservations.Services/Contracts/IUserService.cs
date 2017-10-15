@@ -10,5 +10,7 @@ namespace HotelReservations.Services.Contracts
     public interface IUserService
     {
         User GetByUserName(string userName);
+
+        User GetById(string id);
     }
 }

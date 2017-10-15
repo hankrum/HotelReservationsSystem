@@ -44,10 +44,10 @@ namespace HotelReservations.Services.Services
 
         public void Add(Reservation reservation)
         {
-            User user = this.userService.GetByUserName(reservation.User.UserName);
+            User user = this.userService.GetById(reservation.User.Id);
             bool userExists = user != null;
 
-            Hotel hotel = this.hotelsService.GetByName(reservation.Hotel.Name);
+            Hotel hotel = this.hotelsService.GetById(reservation.Hotel.Id);
             bool hotelExists = hotel != null;
 
             if (userExists)

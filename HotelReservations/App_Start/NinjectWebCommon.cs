@@ -92,6 +92,7 @@ namespace HotelReservations.Web.App_Start
             kernel.Bind<ICitiesService>().To<CitiesService>();
             kernel.Bind<ICountriesService>().To<CountriesService>();
             kernel.Bind<IReservationService>().To<ReservationService>();
+            kernel.Bind<IUserService>().To<UserService>();
 
 
         }
