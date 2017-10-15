@@ -30,8 +30,26 @@ namespace HotelReservations.Web.Models
         public short ChildrenNumber { get; set; }
 
         [Required]
-        public IEnumerable<string> MealPlan { get; set; }
+        public string MealPlan { get; set; }
 
         //public virtual Room Room { get; set; }
+
+        public Reservation CreateReservation ()
+        {
+            Reservation result = new Reservation();
+
+            result.StartDate = this.StartDate;
+            result.EndDate = this.EndDate;
+            result.AdultsNumber = this.AdultsNumber;
+            result.ChildrenNumber = this.ChildrenNumber;
+            result.MealPlan = (MealPlan) Enum.Parse(typeof(MealPlan), this.MealPlan);
+
+            result.User = new User();
+            result.User.Id = this.UserId;
+            result.Hotel = new Hotel();
+            result.Hotel.Id = this.HotelId;
+
+            return result;
+        }
     }
 }
