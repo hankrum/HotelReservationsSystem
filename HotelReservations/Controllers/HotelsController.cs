@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System;
+using HotelReservations.Data.Model;
 
 namespace HotelReservations.Web.Controllers
 {
@@ -37,5 +39,15 @@ namespace HotelReservations.Web.Controllers
 
             return View(hotels.Collection);
         }
+
+        public ActionResult Details(Guid? id)
+        {
+            Hotel hotel = this.hotelsService.GetById(id);
+
+            HotelViewModel viewModel = new HotelViewModel(hotel);
+
+            return this.View(viewModel);
+        }
+
     }
 }

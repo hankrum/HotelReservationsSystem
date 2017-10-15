@@ -1,4 +1,5 @@
 ﻿using HotelReservations.Data.Model;
+using System;
 using System.Linq;
 
 namespace HotelReservations.Services.Contracts
@@ -10,5 +11,7 @@ namespace HotelReservations.Services.Contracts
         void Update(Hotel hotel);
 
         void Add(Hotel hotel);
+
+        Hotel GetById(Guid? Id);
    }
 }

@@ -17,6 +17,7 @@ namespace HotelReservations.Data.Model
 
         [Required]
         [Index]
+        [Range(1, 5)]
         public short Stars { get; set; }
 
         public string Address { get; set; }

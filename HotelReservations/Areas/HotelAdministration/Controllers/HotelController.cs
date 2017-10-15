@@ -26,13 +26,13 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddNew()
+        public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddNew(HotelViewModel hotel)
+        public ActionResult Add(HotelViewModel hotel)
         {
             this.hotelsService.Add(hotel.CreateHotel());
             return RedirectToAction("Index");

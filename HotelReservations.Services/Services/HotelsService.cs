@@ -2,6 +2,7 @@
 using HotelReservations.Data.Repositories;
 using HotelReservations.Data.SaveContext;
 using HotelReservations.Services.Contracts;
+using System;
 using System.Linq;
 
 namespace HotelReservations.Services.Services
@@ -59,5 +60,11 @@ namespace HotelReservations.Services.Services
             this.hotelsRepo.Add(hotel);
             this.context.Commit();
         }
+
+        public Hotel GetById(Guid? Id)
+        {
+            return this.hotelsRepo.All.FirstOrDefault<Hotel>(x => x.Id == Id);
+        }
+
     }
 }

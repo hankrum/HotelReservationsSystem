@@ -9,7 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
         @if (User.IsInRole(WebConstants.SiteAdminRoleString))
         {
-            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Register Hotel Admin", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         }
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })

@@ -26,10 +26,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Hotel List", "Index", "Hotels")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", new { area = string.Empty, controller = "Home" })</li>
+                    <li>@Html.ActionLink("Hotel List", "Index", new { area = string.Empty, controller = "Hotels" })</li>
+                    <li>@Html.ActionLink("About", "About", new { area = string.Empty, controller = "Home" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", new { area = string.Empty, controller = "Home" })</li>
                     @if (Request.IsAuthenticated && User.IsInRole(WebConstants.SiteAdminRoleString))
                     {
                         <li>@Html.ActionLink("SiteAdmin", "Index", "SiteAdmin", new { area = "SiteAdministration" }, new { })</li>

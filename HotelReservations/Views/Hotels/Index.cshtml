@@ -12,9 +12,26 @@
 @{string url = ""; }
 <script type="text/x-kendo-tmpl" id="template">
     <div class="product">
-        <img src="#:FirstPhotoUrl#" alt="#:FirstPhotoUrl# image" />
-        <h3>#:Name#</h3>
-        <p>#:kendo.toString(Name, "c")#</p>
+        <a href="/Hotels/Details/#:Id#">
+            <img src="#:FirstPhotoUrl#" alt="#:FirstPhotoUrl# image" />
+        </a>
+        @*@Html.ActionLink("#:Name#", "Details", "Hotels", new { id = "#:Id#" })*@
+        <a href="/Hotels/Details/#:Id#">
+            <h3>#:Name#</h3>
+        </a>
+        @*@{string starsStr = "#:stars#";}
+        @{ int stars = int.Parse(starsStr); }*@
+        <p>Stars: #:Stars#</p>
+        @*<p>
+            @{for (int i = 1; i <= stars; i++)
+                {
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                }
+            }
+        </p>*@
+        <p>#:CityName#</p>
+        <p>#:CountryName#</p>
+        @*<p>#:kendo.toString(Name, "c")#</p>*@
     </div>
 </script>
 
@@ -28,6 +45,8 @@
         .ServerOperation(false)
      )
     .Pageable()
+    //.ToolBar(toolbar => toolbar.Create())
+    .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Single))
     )
 </div>
 
@@ -47,6 +66,8 @@
         height: 170px;
         margin: 0 5px;
         padding: 0;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
     }
 
         .product img {
@@ -67,7 +88,9 @@
         }
 
         .product p {
-            visibility: hidden;
+            font-size: .7em;
+            color: #999;
+            /*visibility: hidden;*/
         }
 
         .product:hover p {
@@ -97,4 +120,3 @@
         visibility: hidden;
     }
 </style>
-

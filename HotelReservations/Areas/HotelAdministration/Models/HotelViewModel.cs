@@ -16,43 +16,51 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
 
         public HotelViewModel(Hotel hotel)
         {
-            this.Name = hotel.Name;
-            this.Stars = hotel.Stars;
-            this.Address = hotel.Address;
-            this.CityName = hotel.City.Name;
-            this.CountryName = hotel.Country.Name;
-            this.Zip = hotel.Zip;
-            this.Rooms = new HashSet<RoomViewModel>();
-            hotel.Rooms.Select(x => this.Rooms.Add(new RoomViewModel(x)));
-            this.PhotoUrls = new HashSet<string>();
-            bool hotelPhotosEmpty = hotel.PhotoUrls != null && this.PhotoUrls.Count > 0;
-
-            if (!hotelPhotosEmpty)
+            if (hotel != null)
             {
-                hotel.PhotoUrls.Select(x => this.PhotoUrls.Add(x.Url));
+                this.Id = hotel.Id;
+                this.Name = hotel.Name;
+                this.Stars = hotel.Stars;
+                this.Address = hotel.Address;
+                this.CityName = hotel.City.Name;
+                this.CountryName = hotel.Country.Name;
+                this.Zip = hotel.Zip;
+                this.Rooms = new HashSet<RoomViewModel>();
+                hotel.Rooms.Select(x => this.Rooms.Add(new RoomViewModel(x)));
+                this.PhotoUrls = new HashSet<string>();
+                bool hotelPhotosEmpty = hotel.PhotoUrls != null && this.PhotoUrls.Count > 0;
+
+                if (!hotelPhotosEmpty)
+                {
+                    hotel.PhotoUrls.Select(x => this.PhotoUrls.Add(x.Url));
+                }
+
+                bool firstPhotoEmpty = hotel.FirstPhotoUrl == null || hotel.FirstPhotoUrl == String.Empty;
+
+                if (!firstPhotoEmpty)
+                {
+                    this.FirstPhotoUrl = hotel.FirstPhotoUrl;   //this.PhotoUrls.ElementAt<string>(0);
+                }
+                //else if (this.FirstPhotoUrl!=null)
+                //{
+                //    this.FirstPhotoUrl = hotel.FirstPhotoUrl;
+                //}
+
+                this.HasParking = hotel.HasParking;
+                this.HasInternet = hotel.HasInternet;
+                this.HasRestaurant = hotel.HasRestaurant;
+
             }
-
-            bool firstPhotoEmpty = hotel.FirstPhotoUrl == null || hotel.FirstPhotoUrl == String.Empty;
-
-            if (!firstPhotoEmpty)
-            {
-                this.FirstPhotoUrl = hotel.FirstPhotoUrl;   //this.PhotoUrls.ElementAt<string>(0);
-            }
-            //else if (this.FirstPhotoUrl!=null)
-            //{
-            //    this.FirstPhotoUrl = hotel.FirstPhotoUrl;
-            //}
-
-            this.HasParking = hotel.HasParking;
-            this.HasInternet = hotel.HasInternet;
-            this.HasRestaurant = hotel.HasRestaurant;
         }
+        [ScaffoldColumn(false)]
+        public Guid Id { get; private set; }
 
         [Required]
         [MinLength(2)]
         public string Name { get; set; }
 
         [Required]
+        [Range(1, 5)]
         public short Stars { get; set; }
 
         public string Address { get; set; }

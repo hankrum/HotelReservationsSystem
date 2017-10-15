@@ -89,6 +89,8 @@ namespace HotelReservations.Web.App_Start
             //kernel.Bind<IMapper>().To<Mapper>();
 
             kernel.Bind<IHotelsService>().To<HotelsService>();
+            kernel.Bind<ICitiesService>().To<CitiesService>();
+            kernel.Bind<ICountriesService>().To<CountriesService>();
 
 
         }
