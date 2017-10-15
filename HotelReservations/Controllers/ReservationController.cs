@@ -49,7 +49,12 @@ namespace HotelReservations.Web.Controllers
             var user = User.Identity;
             var dbUser = this.userService.GetByUserName(user.Name);
             model.UserId = dbUser.Id;
-            return View();
+
+            var reservation = model.CreateReservation();
+
+            this.reservationService.Add(reservation);
+
+            return RedirectToAction("Index", "Hotels");
         }
     }
 }

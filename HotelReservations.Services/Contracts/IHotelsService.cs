@@ -13,5 +13,7 @@ namespace HotelReservations.Services.Contracts
         void Add(Hotel hotel);
 
         Hotel GetById(Guid? Id);
+
+        Hotel GetByName(string name);
    }
 }

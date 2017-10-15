@@ -14,20 +14,20 @@ namespace HotelReservations.Services.Services
     {
         private readonly IEfRepository<Reservation> reservationRepo;
         private readonly ISaveContext context;
-        //private ICitiesService citiesService;
-        //private ICountriesService countriesService;
+        private IUserService userService;
+        private IHotelsService hotelsService;
 
         public ReservationService(
             IEfRepository<Reservation> reservationRepo,
-            //ICountriesService countriesService,
-            //ICitiesService citiesService,
+            IHotelsService hotelsService,
+            IUserService userService,
             IEfRepository<Reservation> countriesRepo,
             ISaveContext context
             )
         {
             this.reservationRepo = reservationRepo;
-            //this.citiesService = citiesService;
-            //this.countriesService = countriesService;
+            this.userService = userService;
+            this.hotelsService = hotelsService;
             this.context = context;
         }
 
@@ -44,24 +44,24 @@ namespace HotelReservations.Services.Services
 
         public void Add(Reservation reservation)
         {
-            //City city = this.citiesService.GetByName(hotel.City.Name);
-            //bool cityExists = city != null;
+            User user = this.userService.GetByUserName(reservation.User.UserName);
+            bool userExists = user != null;
 
-            //Country country = this.countriesService.GetByName(hotel.Country.Name);
-            //bool countryExists = country != null;
+            Hotel hotel = this.hotelsService.GetByName(reservation.Hotel.Name);
+            bool hotelExists = hotel != null;
 
-            //if (cityExists)
-            //{
-            //    hotel.City = city;
-            //}
+            if (userExists)
+            {
+                reservation.User = user;
+            }
 
-            //if (countryExists)
-            //{
-            //    hotel.Country = country;
-            //}
+            if (hotelExists)
+            {
+                reservation.Hotel = hotel;
+            }
 
-            //this.hotelsRepo.Add(hotel);
-            //this.context.Commit();
+            this.reservationRepo.Add(reservation);
+            this.context.Commit();
         }
 
         //public Reservation GetById(Guid? Id)

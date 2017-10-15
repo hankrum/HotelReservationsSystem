@@ -66,5 +66,10 @@ namespace HotelReservations.Services.Services
             return this.hotelsRepo.All.FirstOrDefault<Hotel>(x => x.Id == Id);
         }
 
+        public Hotel GetByName(string name)
+        {
+            return this.hotelsRepo.All.FirstOrDefault<Hotel>(h => h.Name == name);
+        }
+
     }
 }
