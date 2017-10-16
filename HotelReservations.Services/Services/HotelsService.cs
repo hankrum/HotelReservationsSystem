@@ -13,11 +13,13 @@ namespace HotelReservations.Services.Services
         private readonly ISaveContext context;
         private ICitiesService citiesService;
         private ICountriesService countriesService;
+        private IUserService userService;
 
         public HotelsService(
             IEfRepository<Hotel> hotelsRepo,
             ICountriesService countriesService,
             ICitiesService citiesService,
+            IUserService userService,
             IEfRepository<Country> countriesRepo,
             ISaveContext context
             )
@@ -25,6 +27,7 @@ namespace HotelReservations.Services.Services
             this.hotelsRepo = hotelsRepo;
             this.citiesService = citiesService;
             this.countriesService = countriesService;
+            this.userService = userService;
             this.context = context;
         }
 
@@ -41,6 +44,18 @@ namespace HotelReservations.Services.Services
 
         public void Add(Hotel hotel)
         {
+            User user = this.userService.GetById(hotel.User.Id);
+            bool userExists = user != null;
+
+            if (userExists)
+            {
+                hotel.User = user;
+            }
+            else
+            {
+                throw new ArgumentNullException("User cannot be null");
+            }
+
             City city = this.citiesService.GetByName(hotel.City.Name);
             bool cityExists = city != null;
 

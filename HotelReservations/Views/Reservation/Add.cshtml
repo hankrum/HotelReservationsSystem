@@ -12,9 +12,8 @@
 
 @using (Html.BeginForm("Add", "Reservation", FormMethod.Post))
 {
-    <div>@ViewBag.HotelId</div>
     <span>
-        <input type="text" name="HotelId"  value=@ViewBag.HotelId readonly/> @*style="visibility:hidden"*@
+        <input type="text" name="HotelId"  value=@ViewBag.HotelId readonly style="visibility:hidden"/> 
     </span>
 <div>
     @*<label for=""></label>*@

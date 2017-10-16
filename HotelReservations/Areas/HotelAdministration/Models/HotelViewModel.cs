@@ -89,6 +89,8 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
 
         public bool HasInternet { get; set; }
 
+        [ScaffoldColumn(false)]
+        public string UserId { get; set; }
 
         public Hotel CreateHotel()
         {
@@ -121,6 +123,8 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Models
             result.HasInternet = this.HasInternet;
             result.HasParking = this.HasParking;
             result.HasRestaurant = this.HasRestaurant;
+            result.User = new User();
+            result.User.Id = this.UserId;
 
             return result;
         }

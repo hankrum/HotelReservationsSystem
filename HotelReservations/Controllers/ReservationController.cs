@@ -46,6 +46,7 @@ namespace HotelReservations.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(ReservationViewModel model)
         {
             var user = User.Identity;
