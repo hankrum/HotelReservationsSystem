@@ -1,4 +1,5 @@
-﻿using HotelReservations.Data.Model;
+﻿using Bytes2you.Validation;
+using HotelReservations.Data.Model;
 using HotelReservations.Data.Repositories;
 using HotelReservations.Data.SaveContext;
 using HotelReservations.Services.Contracts;
@@ -21,10 +22,16 @@ namespace HotelReservations.Services.Services
             IEfRepository<Reservation> reservationRepo,
             IHotelsService hotelsService,
             IUserService userService,
-            IEfRepository<Reservation> countriesRepo,
+            //IEfRepository<Reservation> countriesRepo,
             ISaveContext context
             )
         {
+            Guard.WhenArgument(reservationRepo, "reservationRepo").IsNull().Throw();
+            Guard.WhenArgument(hotelsService, "hotelsService").IsNull().Throw();
+            Guard.WhenArgument(userService, "userService").IsNull().Throw();
+            //Guard.WhenArgument(countriesRepo, "countriesRepo").IsNull().Throw();
+            Guard.WhenArgument(context, "context").IsNull().Throw();
+
             this.reservationRepo = reservationRepo;
             this.userService = userService;
             this.hotelsService = hotelsService;
