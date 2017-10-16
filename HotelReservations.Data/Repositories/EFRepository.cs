@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using HotelReservations.Data.Model;
 
 namespace HotelReservations.Data.Repositories
 {
@@ -67,5 +68,17 @@ namespace HotelReservations.Data.Repositories
 
             entry.State = EntityState.Modified;
         }
+
+        //public T GetByName(string name)
+        //{
+        //    return this.context.Set<T>().FirstOrDefault<T>(x => x.Name==name);
+        //}
+
+        public T GetById(Guid id)
+        {
+            return this.context.Set<T>().Find(id);
+        }
+
+
     }
 }

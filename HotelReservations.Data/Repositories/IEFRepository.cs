@@ -18,5 +18,9 @@ namespace HotelReservations.Data.Repositories
         void Delete(T entity);
 
         void Update(T entity);
+
+        //T GetByName(string name);
+
+        T GetById(Guid id);
     }
 }

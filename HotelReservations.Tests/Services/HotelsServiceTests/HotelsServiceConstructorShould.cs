@@ -13,7 +13,7 @@ namespace HotelReservations.Tests.Services.CitiesServiceTests
     public class HotelsServiceConstructorShould
     {
         [Test]
-        public void ReturnsAnInstance_WhenBothParametersAreNotNull()
+        public void ReturnsAnInstance_WhenAllParametersAreNotNull()
         {
             // Arrange
             var hotelRepoMock = new Mock<IEfRepository<Hotel>>();
@@ -130,6 +130,54 @@ namespace HotelReservations.Tests.Services.CitiesServiceTests
                     null,
                     countriesRepoMock.Object,
                     dbContextMock.Object
+                ));
+        }
+
+        [Test]
+        public void ThrowException_WhenCountriesRepoIsNull()
+        {
+            // Arrange
+            var hotelRepoMock = new Mock<IEfRepository<Hotel>>();
+            var countriesServiceMock = new Mock<ICountriesService>();
+            var citiesServiceMock = new Mock<ICitiesService>();
+            var userServiceMock = new Mock<IUserService>();
+            var countriesRepoMock = new Mock<IEfRepository<Country>>();
+            var dbContextMock = new Mock<ISaveContext>();
+
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => new HotelsService
+                (
+                    hotelRepoMock.Object,
+                    countriesServiceMock.Object,
+                    citiesServiceMock.Object,
+                    userServiceMock.Object,
+                    null,
+                    dbContextMock.Object
+                ));
+        }
+
+        [Test]
+        public void ThrowException_WhenContextIsNull()
+        {
+            // Arrange
+            var hotelRepoMock = new Mock<IEfRepository<Hotel>>();
+            var countriesServiceMock = new Mock<ICountriesService>();
+            var citiesServiceMock = new Mock<ICitiesService>();
+            var userServiceMock = new Mock<IUserService>();
+            var countriesRepoMock = new Mock<IEfRepository<Country>>();
+            var dbContextMock = new Mock<ISaveContext>();
+
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => new HotelsService
+                (
+                    hotelRepoMock.Object,
+                    countriesServiceMock.Object,
+                    citiesServiceMock.Object,
+                    userServiceMock.Object,
+                    countriesRepoMock.Object,
+                    null
                 ));
         }
 
