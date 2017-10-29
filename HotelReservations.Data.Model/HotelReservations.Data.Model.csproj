@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Abstractions\DataModel.cs" />
     <Compile Include="Abstractions\NamedModel.cs" />
+    <Compile Include="AspNetRole.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="PriceModels\PriceSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomType.cs" />
     <Compile Include="User.cs" />

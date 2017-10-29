@@ -1,9 +1,5 @@
 ﻿using HotelReservations.Data.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelReservations.Services.Contracts
 {
@@ -12,5 +8,7 @@ namespace HotelReservations.Services.Contracts
         User GetByUserName(string userName);
 
         User GetById(string id);
+
+        IQueryable<User> GetAllByRole(string roleName);
     }
 }

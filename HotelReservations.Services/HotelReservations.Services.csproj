@@ -59,6 +59,7 @@
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
     <Compile Include="Contracts\IReservationService.cs" />
+    <Compile Include="Contracts\IRoleService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Services\HotelsService.cs" />
     <Compile Include="Contracts\IHotelsService.cs" />
     <Compile Include="Services\ReservationService.cs" />
+    <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

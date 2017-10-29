@@ -10,14 +10,14 @@
 <h2>Add Hotel Admin</h2>
 
 
-@*@(Html.Kendo().Grid<HotelAdminViewModel>()
+@(Html.Kendo().Grid<HotelAdminViewModel>()
         .Name("grid")
         .Columns(columns => {
             columns.Bound(pr => pr.Email);
             
 
         })
-        .Editable()
+        //.Editable()
         .Pageable()
         .Sortable()
-        )*@
+        )

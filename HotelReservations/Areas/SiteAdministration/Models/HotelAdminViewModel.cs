@@ -1,4 +1,5 @@
-﻿using HotelReservations.Data.Model.Contracts;
+﻿using HotelReservations.Data.Model;
+using HotelReservations.Data.Model.Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -12,26 +13,28 @@ using System.Web;
 
 namespace HotelReservations.Web.Areas.SiteAdministration.Models
 {
-    public class HotelAdminViewModel : IdentityUser, IAuditable, IDeletable
+    public class HotelAdminViewModel //: IdentityUser, IAuditable, IDeletable
     {
         //private ICollection<Reservation> reservations;
 
-        //public UserViewModel()
-        //{
-        //    //this.reservations = new HashSet<Reservation>();
-        //}
+        public HotelAdminViewModel(User user)
+        {
+            this.UserName = user.UserName;
+        }
 
-        [Index]
-        public bool IsDeleted { get; set; }
+        public string UserName { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime? DeletedOn { get; set; }
+        //[Index]
+        //public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime? CreatedOn { get; set; }
+        //[DataType(DataType.DateTime)]
+        //public DateTime? DeletedOn { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime? ModifiedOn { get; set; }
+        //[DataType(DataType.DateTime)]
+        //public DateTime? CreatedOn { get; set; }
+
+        //[DataType(DataType.DateTime)]
+        //public DateTime? ModifiedOn { get; set; }
 
         //public virtual ICollection<Reservation> Reservations
         //{
