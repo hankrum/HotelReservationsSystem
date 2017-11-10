@@ -1,5 +1,6 @@
 ﻿using HotelReservations.Infrastructure;
 using HotelReservations.Services.Contracts;
+using HotelReservations.Web.Areas.SiteAdministration.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,24 @@ namespace HotelReservations.Web.Areas.SiteAdministration.Controllers
         // GET: SiteAdministration/SiteAdmin
         public ActionResult Index()
         {
-            var hotelAdmins = this.userService.Get
-            return View();
+            HotelAdminsViewModel hotelAdmins = new HotelAdminsViewModel();
+
+            var users = this.userService.GetAllByRole(WebConstants.HotelAdminRoleString);
+            var collectionUsers = new List<HotelAdminViewModel>();
+
+            foreach (var user in users)
+            {
+
+                HotelAdminViewModel hotelAdmin = new HotelAdminViewModel(this.userService);
+                hotelAdmin.UserName = hotelAdmin.GetModel(user).UserName;
+                collectionUsers.Add(hotelAdmin);
+            }
+
+            hotelAdmins.HotelAdmins = collectionUsers;
+
+            //hotelAdmins.HotelAdmins = users.//.Select(hotelAdmin.GetModel);
+
+            return View(hotelAdmins);
         }
     }
 }

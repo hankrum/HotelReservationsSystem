@@ -1,11 +1,12 @@
 ﻿using HotelReservations.Data.Model;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HotelReservations.Services.Contracts
 {
     public interface IRoleService
     {
-        Role GetByRoleName(string roleName);
+        IdentityRole GetByRoleName(string roleName);
 
-        Role GetById(string id);
+        IdentityRole GetById(string id);
     }
 }

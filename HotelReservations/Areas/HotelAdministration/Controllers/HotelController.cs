@@ -1,4 +1,5 @@
-﻿using HotelReservations.Infrastructure;
+﻿using Bytes2you.Validation;
+using HotelReservations.Infrastructure;
 using HotelReservations.Services.Contracts;
 using HotelReservations.Web.Areas.HotelAdministration.Models;
 using System;
@@ -17,6 +18,8 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Controllers
 
         public HotelController(IHotelsService hotelsService, IUserService userService)
         {
+            Guard.WhenArgument(hotelsService, "hotelsService").IsNull().Throw();
+            Guard.WhenArgument(userService, "userService").IsNull().Throw();
             this.hotelsService = hotelsService;
             this.userService = userService;
         }

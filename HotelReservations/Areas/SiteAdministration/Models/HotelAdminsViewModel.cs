@@ -7,6 +7,6 @@ namespace HotelReservations.Web.Areas.SiteAdministration.Models
 {
     public class HotelAdminsViewModel
     {
-        ICollection<HotelAdminViewModel> HotelAdmins { get; set; }
+        public ICollection<HotelAdminViewModel> HotelAdmins { get; set; }
     }
 }

@@ -5,7 +5,6 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -16,8 +15,8 @@
 
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MsSqlDbContext context)
@@ -56,19 +55,6 @@
 
         private void SeedSampleData(MsSqlDbContext context)
         {
-            //if (!context.Posts.Any())
-            //{
-            //    for (int i = 0; i < 5; i++)
-            //    {
-            //        var post = new Post()
-            //        {
-            //            Title = "Post " + i,
-            //            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
-            //            Author = context.Users.First(x => x.Email == AdministratorUserName),
-            //            CreatedOn = DateTime.Now
-            //        };
-
-            //        context.Posts.Add(post);
         }
     }
 }

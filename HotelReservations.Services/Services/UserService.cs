@@ -15,26 +15,27 @@ namespace HotelReservations.Services.Services
     {
         private readonly IEfRepository<User> usersRepo;
         private readonly ISaveContext context;
-        private readonly RoleService roleService;
+        private readonly IRoleService roleService;
 
         public UserService(
             IEfRepository<User> usersRepo, 
             ISaveContext context,
-            RoleService roleService
+            IRoleService roleService
             )
         {
             Guard.WhenArgument(usersRepo, "usersRepo").IsNull().Throw();
             Guard.WhenArgument(context, "context").IsNull().Throw();
             Guard.WhenArgument(roleService, "roleService").IsNull().Throw();
 
+            this.roleService = roleService;
             this.usersRepo = usersRepo;
             this.context = context;
         }
 
-        public IQueryable<User> GetAllByRole(string roleName)
+        public ICollection<IdentityUserRole> GetAllByRole(string roleName)
         {
             var role = this.roleService.GetByRoleName(roleName);
-            var result = this.usersRepo.All.Where(x => x.Roles.FirstOrDefault(r => r.RoleId == role.Id).RoleId == role.Id);
+            var result = role.Users;    //this.usersRepo.All.Where(x => x.Roles.FirstOrDefault(r => r.RoleId == role.Id).RoleId == role.Id);
 
             return result;
         }

@@ -1,5 +1,6 @@
 ﻿using HotelReservations.Data.Model;
 using HotelReservations.Data.Model.Contracts;
+using HotelReservations.Services.Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -15,14 +16,22 @@ namespace HotelReservations.Web.Areas.SiteAdministration.Models
 {
     public class HotelAdminViewModel //: IdentityUser, IAuditable, IDeletable
     {
-        //private ICollection<Reservation> reservations;
+        private readonly IUserService userService;
 
-        public HotelAdminViewModel(User user)
+        public HotelAdminViewModel(IUserService userService)
         {
-            this.UserName = user.UserName;
+            this.userService = userService;
         }
 
         public string UserName { get; set; }
+
+        public HotelAdminViewModel GetModel(IdentityUserRole user)
+        {
+            var result = new HotelAdminViewModel(this.userService);
+            result.UserName = this.userService.GetById(user.UserId).UserName;
+
+            return result;
+        }
 
         //[Index]
         //public bool IsDeleted { get; set; }

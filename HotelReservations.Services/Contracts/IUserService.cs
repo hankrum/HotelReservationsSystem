@@ -1,4 +1,6 @@
 ﻿using HotelReservations.Data.Model;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HotelReservations.Services.Contracts
@@ -9,6 +11,6 @@ namespace HotelReservations.Services.Contracts
 
         User GetById(string id);
 
-        IQueryable<User> GetAllByRole(string roleName);
+        ICollection<IdentityUserRole> GetAllByRole(string roleName);
     }
 }

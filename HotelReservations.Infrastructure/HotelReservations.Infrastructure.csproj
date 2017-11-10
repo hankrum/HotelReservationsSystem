@@ -43,6 +43,7 @@
     <Compile Include="Enums\MealPlan.cs" />
     <Compile Include="Enums\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.cs" />
     <Compile Include="WebConstants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

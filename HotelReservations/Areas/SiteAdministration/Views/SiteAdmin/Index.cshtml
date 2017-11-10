@@ -1,5 +1,6 @@
 ﻿@using Kendo.Mvc.UI
 @using HotelReservations.Web.Areas.SiteAdministration.Models
+@model HotelAdminsViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,17 +8,30 @@
 
 }
 
-<h2>Add Hotel Admin</h2>
+<h2>Hotel Admins</h2>
 
+@*@foreach (var item in Model)
+{
+    Html.DisplayFor(model => model.HotelAdmins);
+}*@
 
-@(Html.Kendo().Grid<HotelAdminViewModel>()
+@*@Html.DisplayFor(model => model.HotelAdmins);*@
+
+@foreach (var hotelAdmin in Model.HotelAdmins)
+{
+    <div>
+        @hotelAdmin.UserName
+    </div>
+}
+
+@*@(Html.Kendo().Grid<HotelAdminViewModel>()
         .Name("grid")
         .Columns(columns => {
-            columns.Bound(pr => pr.Email);
+            columns.Bound(pr => pr.UserName);
             
 
         })
         //.Editable()
         .Pageable()
         .Sortable()
-        )
+        )*@

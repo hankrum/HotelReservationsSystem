@@ -190,7 +190,7 @@ namespace HotelReservations.Controllers
                     IdentityRole role;
 
                     bool roleExists = roleManager.RoleExists(model.Role);
-
+                    
                     if (!roleExists)
                     {
                         role = new IdentityRole { Name = model.Role };
