@@ -431,6 +431,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\HotelAdministration\Controllers\HotelController.cs" />
     <Compile Include="Areas\HotelAdministration\HotelAdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\HotelAdministration\Models\HotelsViewModel.cs" />
     <Compile Include="Areas\HotelAdministration\Models\HotelViewModel.cs" />
     <Compile Include="Areas\HotelAdministration\Models\RoomViewModel.cs" />
     <Compile Include="Areas\SiteAdministration\Controllers\SiteAdminController.cs" />
@@ -528,21 +529,22 @@
     <Content Include="Views\Hotels\Index.cshtml" />
     <Content Include="Views\Hotels\Details.cshtml" />
     <Content Include="Views\Reservation\Add.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Currency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\GridForeignKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Integer.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\Url.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Kendo\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

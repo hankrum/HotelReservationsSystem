@@ -1,6 +1,6 @@
 ﻿@using HotelReservations.Web.Models
 @using HotelReservations.Web.Areas.HotelAdministration.Models
-@using System.Runtime
+@using System.Collections.Generic
 @*@using Kendo.Mvc.resources*@
 
 @{
@@ -8,119 +8,155 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model ICollection<HotelViewModel>
+
 <h2>Select a hotel</h2>
 
-@model ICollection<HotelViewModel>
-@{string url = ""; }
-<script type="text/x-kendo-tmpl" id="template">
+@for (int i = 0; i <= Model.Count / 6; i++)
+{
+    <div class="row">
+        @for (int j = 0; j < 6; j++)
+        {
+            if (i * 6 + j >= Model.Count)
+            {
+                break;
+            }
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="@Model.ElementAt(i*6+j).FirstPhotoUrl" alt="@Model.ElementAt(i*6+j).Name" />
+                    @*@Html.ActionLink(Model.ElementAt(i*6+j).Name, "Details", "Hotels", new { id = "Model.ElementAt(i*6+j).Id" })*@
+                    <a href="/Hotels/Details/@Model.ElementAt(i*6+j).Id">
+                        <h4>@Model.ElementAt(i * 6 + j).Name</h4>
+                    </a>
+                    <p>
+                        @for (int s = 0; s < @Model.ElementAt(i * 6 + j).Stars; s++)
+                        {
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        }
+                    </p>
+                    <p>City: @Model.ElementAt(i * 6 + j).CityName</p>
+                    <p>Country: @Model.ElementAt(i * 6 + j).CountryName</p>
+                </div>
+            </div>
+        }
+
+    </div>
+
+}
+
+@*Kendo below*@
+
+
+@*@{string url = ""; }*@
+@*<script type="text/x-kendo-tmpl" id="template">
     <div class="product">
         <a href="/Hotels/Details/#:Id#">
             <img src="#:FirstPhotoUrl#" alt="#:FirstPhotoUrl# image" />
-        </a>
-        @*@Html.ActionLink("#:Name#", "Details", "Hotels", new { id = "#:Id#" })*@
-        <a href="/Hotels/Details/#:Id#">
-            <h3>#:Name#</h3>
-        </a>
-        @*@{string starsStr = "#:stars#";}
-        @{ int stars = int.Parse(starsStr); }*@
-        <p>Category: #:Stars#-stars</p>
-        @*<p>
-            @{for (int i = 1; i <= stars; i++)
-                {
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                }
+        </a>*@
+@*@Html.ActionLink("#:Name#", "Details", "Hotels", new { id = "#:Id#" })*@
+@*<a href="/Hotels/Details/#:Id#">
+        <h3>#:Name#</h3>
+    </a>*@
+@*@{string starsStr = "#:stars#";}
+    @{ int stars = int.Parse(starsStr); }*@
+@*<p>Category: #:Stars#-stars</p>*@
+@*<p>
+        @{for (int i = 1; i <= stars; i++)
+            {
+                <span class="glyphicon glyphicon-star-empty"></span>
             }
-        </p>*@
-        <p>#:CityName#</p>
-        <p>#:CountryName#</p>
-        @*<p>#:kendo.toString(Name, "c")#</p>*@
-    </div>
-</script>
+        }
+    </p>*@
+@*<p>#:CityName#</p>
+    <p>#:CountryName#</p>*@
+@*<p>#:kendo.toString(Name, "c")#</p>*@
+@*</div>
+    </script>*@
 
-<div class="demo-section k-content wide">
-    @(Html.Kendo().ListView<HotelViewModel>(Model)
-    .Name("listView")
-    .TagName("div")
-    .ClientTemplateId("template")
-    .DataSource(dataSource => dataSource
-        .PageSize(20)
-        .ServerOperation(false)
-     )
-    .Pageable()
-    //.ToolBar(toolbar => toolbar.Create())
-    .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Single))
-    )
-</div>
+@*<div class="demo-section k-content wide">
+        @(Html.Kendo().ListView<HotelViewModel>(Model)
+        .Name("listView")
+        .TagName("div")
+        .ClientTemplateId("template")
+        .DataSource(dataSource => dataSource
+            .PageSize(20)
+            .ServerOperation(false)
+         )
+        .Pageable()
+        //.ToolBar(toolbar => toolbar.Create())
+        .Selectable(selectable => selectable.Mode(ListViewSelectionMode.Single))
+        )
+    </div>*@
 
-<style>
-    #listView {
-        padding: 10px 5px;
-        margin-bottom: -1px;
-        min-height: 510px;
-        /* Avoid cutout if font or line is bigger */
-        font: inherit;
-    }
-
-    .product {
-        float: left;
-        position: relative;
-        width: 111px;
-        height: 200px;
-        margin: 0 5px;
-        padding: 0;
-        border: 1px solid lightgrey;
-        border-radius: 5px;
-    }
-
-        .product img {
-            width: 110px;
-            height: 110px;
+@*<style>
+        #listView {
+            padding: 10px 5px;
+            margin-bottom: -1px;
+            min-height: 510px;
+            /* Avoid cutout if font or line is bigger */
+            font: inherit;
         }
 
-        .product h3 {
-            margin: 0;
-            padding: 3px 5px 0 0;
-            max-width: 96px;
-            overflow: hidden;
-            line-height: 1.0em;
-            font-size: .9em;
-            font-weight: normal;
-            text-transform: uppercase;
-            color: #999;
-            text-align: center;
-        }
-
-        .product p {
-            font-size: .7em;
-            color: #999;
-            text-align: center;
-            /*visibility: hidden;*/
-        }
-
-        .product:hover p {
-            visibility: visible;
-            position: absolute;
-            width: 110px;
-            height: 110px;
-            top: 0;
-            margin: 0;
+        .product {
+            float: left;
+            position: relative;
+            width: 111px;
+            height: 200px;
+            margin: 0 5px;
             padding: 0;
-            line-height: 110px;
-            vertical-align: middle;
-            text-align: center;
-            color: #fff;
-            background-color: rgba(0,0,0,0.75);
-            transition: background .2s linear, color .2s linear;
-            -moz-transition: background .2s linear, color .2s linear;
-            -webkit-transition: background .2s linear, color .2s linear;
-            -o-transition: background .2s linear, color .2s linear;
+            border: 1px solid lightgrey;
+            border-radius: 5px;
         }
 
-    .k-listview:after {
-        content: ".";
-        display: block;
-        height: 0;
-        clear: both;
-        visibility: hidden;
-    }
-</style>
+            .product img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .product h3 {
+                margin: 0;
+                padding: 3px 5px 0 0;
+                max-width: 96px;
+                overflow: hidden;
+                line-height: 1.0em;
+                font-size: .9em;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: #999;
+                text-align: center;
+            }
+
+            .product p {
+                font-size: .7em;
+                color: #999;
+                text-align: center;
+                /*visibility: hidden;*/
+            }
+
+            .product:hover p {
+                visibility: visible;
+                position: absolute;
+                width: 110px;
+                height: 110px;
+                top: 0;
+                margin: 0;
+                padding: 0;
+                line-height: 110px;
+                vertical-align: middle;
+                text-align: center;
+                color: #fff;
+                background-color: rgba(0,0,0,0.75);
+                transition: background .2s linear, color .2s linear;
+                -moz-transition: background .2s linear, color .2s linear;
+                -webkit-transition: background .2s linear, color .2s linear;
+                -o-transition: background .2s linear, color .2s linear;
+            }
+
+        .k-listview:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    </style>*@

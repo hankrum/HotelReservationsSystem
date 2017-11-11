@@ -27,7 +27,19 @@ namespace HotelReservations.Web.Areas.HotelAdministration.Controllers
         // GET: HotelAdministration/Hotel
         public ActionResult Index()
         {
-            return View();
+            var user = User.Identity;
+            var dbUser = this.userService.GetByUserName(user.Name);
+
+            var hotelsOfUser = this.hotelsService
+                .GetAll()
+                .Where(hotel => hotel.User.Id == dbUser.Id)
+                .ToList()
+                .Select(h => new HotelViewModel(h));
+
+            var hotelsViewModel = new HotelsOfUserViewModel();
+            hotelsViewModel.Hotels= hotelsOfUser;
+
+            return View(hotelsViewModel);
         }
 
         [HttpGet]

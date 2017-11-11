@@ -4,7 +4,34 @@
     Layout = "~/Areas/HotelAdministration/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Hotels List</h2>
+<h2>My Hotels List</h2>
 
-
-
+<table class="table table-striped table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>City</th>
+            <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach (var hotel in Model.Hotels)
+        {
+            <tr>
+                <td>
+                    @hotel.Name
+                </td>
+                <td>
+                    <img src="@hotel.FirstPhotoUrl" class="img-thumbnail" alt="@hotel.Name" width="50" height="50"/>
+                </td>
+                <td>
+                    @hotel.CityName
+                </td>
+                <td>
+                    @hotel.CountryName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
