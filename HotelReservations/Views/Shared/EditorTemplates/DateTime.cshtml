@@ -1,31 +1,20 @@
-@model DateTime
+@model System.DateTime?
 
-@*@(Html.Kendo().DateTimePickerFor(m => m))*@
+@Html.TextBox("", String.Format("{0:d}", Model.HasValue ? Model.Value.ToShortDateString() : string.Empty), new { @class = "datepicker" })
 
-@{
-    List<SelectListItem> days = new List<SelectListItem>();
-    for (int i = 1; i <= 31; i++)
-    {
-        days.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = (i == Model.Day ? true : false) });
+<script type="text/javascript">
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+</script>
+@*<script type="text/javascript">
+    $().ready(function () {
+        $('.datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showOn: "button",
+            buttonImage: "/Images/calendar.gif",
+            buttonImageOnly: true
+        });
     }
-
-    List<SelectListItem> months = new List<SelectListItem>();
-    for (int i = 1; i <= 12; i++)
-    {
-        months.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = (i == Model.Month ? true : false) });
-    }
-
-    List<SelectListItem> years = new List<SelectListItem>();
-
-    int prevYearCount = ViewBag.PreviousYearCount;
-    int nextYearCount = ViewBag.NextYearCount;
-
-    for (int i = Model.Year - prevYearCount; i <= Model.Year + nextYearCount; i++)
-    {
-        years.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = (i == Model.Year ? true : false) });
-    }
-}
-
-@Html.DropDownList("days", days)
-@Html.DropDownList("months", months)
-@Html.DropDownList("years", years)
+</script>*@

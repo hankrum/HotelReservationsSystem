@@ -19,7 +19,7 @@
 <div class="form-group">
     @*<label for=""></label>*@
     @Html.Label("StartDate", "Check-in:")
-    @Html.EditorFor(m => m.StartDate)
+    @Html.Editor("StartDate")
     @*@(Html.Kendo().DatePicker()
         .Name("StartDate")
     )*@
@@ -27,7 +27,7 @@
 <div class="form-group">
     @*<label for="EndDate">Check-out:</label>*@
     @Html.Label("EndDate", "Check-out:")
-    @Html.EditorFor(m => m.EndDate)
+    @Html.Editor("EndDate")
     @*@(Html.Kendo().DatePicker()
     .Name("EndDate")
     )*@
@@ -44,7 +44,7 @@
 </div>
 <div class="form-group">
     @Html.Label("ChildrenNumber", "Number of Children:")
-    @Html.EditorFor(m => m.ChildrenNumber)
+    @Html.EditorFor(m => m.ChildrenNumber, new { @class = "form-control" })
     @*<label for="ChildrenNumber">Number of Children:</label>
     @(Html.Kendo().NumericTextBox()//.NumericTextBox<int>()
         .Name("ChildrenNumber")
@@ -54,7 +54,7 @@
 </div>
 <div class="form-group">
     @Html.Label("MealPlan", "Meal Plan:")
-    @Html.DropDownList("MealPlan", new SelectList(Enum.GetValues(typeof(MealPlan))))
+    @Html.DropDownList("MealPlan", new SelectList(Enum.GetValues(typeof(MealPlan))), new { @class = "form-control" })
 
     @*<label for="MealPlan">Meal Plan:</label>
     @(Html.Kendo().ComboBox()

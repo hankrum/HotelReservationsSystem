@@ -10,18 +10,24 @@ namespace HotelReservations.Web.Models
 {
     public class ReservationViewModel
     {
+        public ReservationViewModel()
+        {
+            this.StartDate = DateTime.Now;
+            this.EndDate = DateTime.Now;
+        }
+
         public Guid HotelId { get; set; }
 
         public string UserId { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime StartDate { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? StartDate { get; set; }
 
         //TODO: Validation
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime EndDate { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? EndDate { get; set; }
 
         [Required]
         //TODO: Minvalue = 1
@@ -38,8 +44,8 @@ namespace HotelReservations.Web.Models
         {
             Reservation result = new Reservation();
 
-            result.StartDate = this.StartDate;
-            result.EndDate = this.EndDate;
+            result.StartDate = (DateTime)this.StartDate;
+            result.EndDate = (DateTime)this.EndDate;
             result.AdultsNumber = this.AdultsNumber;
             result.ChildrenNumber = this.ChildrenNumber;
             result.MealPlan = (MealPlan) Enum.Parse(typeof(MealPlan), this.MealPlan);
