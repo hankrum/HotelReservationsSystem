@@ -1,0 +1,33 @@
+﻿@using HotelReservations.Web.Models
+@*@model ICollection<ReservationViewModel>*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Reservations</h2>
+
+<table class="table table-bordered table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>Hotel Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Adults</th>
+            <th>Children</th>
+            <th>Meal Plan</th>
+       </tr>
+    </thead>
+    <tbody>
+        @foreach(var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.HotelName</td>
+                <td>@reservation.StartDate</td>
+                <td>@reservation.EndDate</td>
+                <td>@reservation.AdultsNumber</td>
+                <td>@reservation.ChildrenNumber</td>
+                <td>@reservation.MealPlan</td>
+            </tr>
+        }
+    </tbody>
+</table>

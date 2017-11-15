@@ -593,6 +593,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Kendo\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Test\DateTime.cshtml" />
+    <Content Include="Views\Reservation\MyReservations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

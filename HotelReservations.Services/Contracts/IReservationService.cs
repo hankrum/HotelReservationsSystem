@@ -11,6 +11,8 @@ namespace HotelReservations.Services.Contracts
     {
         IQueryable<Reservation> GetAll();
 
+        IQueryable<Reservation> GetByUser(string userName);
+
         void Add(Reservation reservation);
     }
 }

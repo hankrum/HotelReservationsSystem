@@ -43,6 +43,11 @@ namespace HotelReservations.Services.Services
             return this.reservationRepo.All;
         }
 
+        public IQueryable<Reservation> GetByUser(string userName)
+        {
+            return this.GetAll().Where(r => r.User.UserName == userName);
+        }
+
         //public void Update(Reservation reservation)
         //{
         //    this.reservationRepo.Update(reservation);

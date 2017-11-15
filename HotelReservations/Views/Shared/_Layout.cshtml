@@ -39,6 +39,10 @@
                     <li>@Html.ActionLink("Hotel List", "Index", new { area = string.Empty, controller = "Hotels" })</li>
                     <li>@Html.ActionLink("About", "About", new { area = string.Empty, controller = "Home" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", new { area = string.Empty, controller = "Home" })</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("My Reservations", "MyReservations", new { area = string.Empty, controller = "Reservation" })</li>
+                    }
                     @if (Request.IsAuthenticated && User.IsInRole(WebConstants.SiteAdminRoleString))
                     {
                         <li>@Html.ActionLink("SiteAdmin", "Index", "SiteAdmin", new { area = "SiteAdministration" }, new { })</li>

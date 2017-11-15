@@ -1,5 +1,6 @@
 ﻿using HotelReservations.Data.Model;
 using HotelReservations.Infrastructure.Enums;
+using HotelReservations.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +17,21 @@ namespace HotelReservations.Web.Models
             this.EndDate = DateTime.Now;
         }
 
+        public ReservationViewModel(Reservation reservation)
+        {
+            this.HotelId = reservation.Hotel.Id;
+            this.HotelName = reservation.Hotel.Name;
+            this.UserId = reservation.User.Id;
+            this.StartDate = reservation.StartDate;
+            this.EndDate = reservation.EndDate;
+            this.AdultsNumber = reservation.AdultsNumber;
+            this.ChildrenNumber = reservation.ChildrenNumber;
+            this.MealPlan = reservation.MealPlan.ToString();
+        }
+
         public Guid HotelId { get; set; }
+
+        public string HotelName { get; set; }
 
         public string UserId { get; set; }
 

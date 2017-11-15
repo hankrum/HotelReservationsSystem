@@ -28,10 +28,18 @@ namespace HotelReservations.Web.Controllers
             this.userService = userService;
         }
 
-        // GET: Reservation
-        public ActionResult Index()
+        //// GET: Reservation
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult MyReservations()
         {
-            return View();
+            var myUserName = User.Identity.Name;
+            var myReservations = this.reservationService.GetByUser(myUserName).ToList().Select(r => new ReservationViewModel(r));
+
+            return View(myReservations);
         }
 
         //[HttpGet]
